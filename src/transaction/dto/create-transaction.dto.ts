@@ -1,4 +1,5 @@
 import { ApiProperty } from "@nestjs/swagger";
+import { Type } from "class-transformer";
 import { IsNotEmpty, IsNumber, IsString, MinLength } from "class-validator";
 import { Category } from "src/category/entities/category.entity";
 import { User } from "src/user/entities/user.entity";
@@ -11,6 +12,7 @@ export class CreateTransactionDto {
   @ApiProperty({ example: 150 })
   @IsNotEmpty()
   @IsNumber()
+  @Type(() => Number)
   amount: number;
 
   @ApiProperty({ example: "expense", enum: ["expense", "income"] })
